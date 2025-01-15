@@ -6,7 +6,8 @@ import pickle
 
 # flask app
 app = Flask(__name__)
-
+hdfksdjfld
+# 
 
 
 sym_des = pd.read_csv("D:/new project/disease_prediction/symtoms_df.csv")
