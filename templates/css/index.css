@@ -1,0 +1,76 @@
+body {
+    background-image: url('static/bgCover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    background-blend-mode: overlay;
+}
+.logo {
+    width: 100%;
+    height: 50px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.myimg {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    padding: 5px;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+}
+.title-symptoms {
+    color: black;
+    margin-bottom: 20px;
+    margin-left: 3px;
+}
+.message-text {
+    color: red;
+}
+.btn {
+    background-color: rgba(16, 4, 95, 0.7);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    margin-left:10px;
+    margin-top:10px;
+    
+}
+.btn:hover {
+    background-color: rgba(16, 4, 95, 0.4);
+    color: white;
+}
+.footer {
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.selected {
+background-color: green !important;
+color: white !important;
+border-color: green !important;
+}
+.speechbutton {
+background-color: rgb(100, 94, 33);
+}
+.fa-solid {
+margin-left:10px;
+margin-top:20px;
+font-size:40px;
+}

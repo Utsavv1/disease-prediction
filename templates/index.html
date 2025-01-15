@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,81 +6,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Health Care Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* Body Background */
         body {
-            background-image: url('static/bgCover.jpg');
+            background: linear-gradient(135deg, #A8EDEA, #FED6E3);
             background-size: cover;
             background-position: center;
-            background-color: rgba(0, 0, 0, 0.15);
-            background-blend-mode: overlay;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 1.5s ease-in-out;
+            color: #333333; /* Neutral dark gray text for readability */
         }
-        .logo {
-            width: 100%;
-            height: 50px;
-            color: white;
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: 10px;
+
+        /* Navbar Replacement with Refresh Icon */
+        .navbar-placeholder {
             display: flex;
+            justify-content: flex-end;
             align-items: center;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #007BFF, #20C997);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .myimg {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-            padding: 5px;
+
+        .refresh-icon {
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        .refresh-icon:hover {
+            transform: rotate(360deg);
+        }
+
+        /* Main Container */
         .container {
-            background-color: rgba(20, 6, 6, 0.2);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
             border-radius: 15px;
             padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
         }
+
+        /* Titles and Labels */
         .title-symptoms {
-            color: black;
-            margin-bottom: 20px;
-            margin-left: 3px;
+            color: #007BFF;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
-        .message-text {
-            color: rgb(68, 26, 26);
+
+        /* Symptom Buttons */
+        .symptom-btn {
+            background-color: #FED6E3;
+            color: #007BFF;
+            border: 1px solid #007BFF;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-weight: bold;
         }
-        .btn {
-            background-color: rgba(26, 18, 75, 0.7);
-            backdrop-filter: blur(5px);
+
+        .symptom-btn:hover {
+            background-color: #20C997;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .symptom-btn.selected {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #20C997;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #17A589;
+        }
+
+        .predict-button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 18px;
+        }
+
+        .predict-button:hover {
+            background-color: #0056B3;
+        }
+
+        /* Speech Button */
+        .speechbutton {
+            background-color: #20C997;
+            color: white;
             border: none;
-            border-radius: 8px;
-            padding: 10px;
-            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
         }
-        .btn:hover {
-            background-color: rgba(16, 4, 95, 0.4);
-            color: white;
+
+        .speechbutton:hover {
+            background-color: #17A589;
         }
-        .footer {
-            background-color: rgba(0, 174, 255, 0.25);
-            backdrop-filter: blur(10px);
+
+        /* Microphone Icon */
+        #microphoneIcon {
+            color: #20C997;
+            font-size: 36px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        #microphoneIcon:hover {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        /* Text Input Field */
+        .form-control {
+            height: 50px;
+            border: 1px solid #20C997;
+            border-radius: 10px;
             padding: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Slide-in Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgba(28, 94, 194, 0.35); background-blend-mode: overlay; background-image: linear-gradient(to bottom, #10045F, #0c4d81); box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);">
-    <div class="container-fluid">
-        <div class="logo">
-            <img class="myimg" src="D:/utsav1/diseases/New folder (2)/Medicine-Recommendation-System-Personalized-Medical-Recommendation-System-with-Machine-Learning/img.png" alt="Logo">
-            <h5 class="titleName">Disease Prediction and Medical Recommendation System</h5>
-        </div>
-        <a class="navbar-brand" href="" id="resetButton">Reset</a>
-        </button>
-    </div>
-</nav>
+<!-- Navbar Placeholder -->
+<div class="navbar-placeholder">
+    <i class="fas fa-sync-alt refresh-icon" onclick="location.reload();"></i>
+</div>
 
 <!-- main form of page -->
 <div class="container my-4 mt-4 bg-glass p-4 rounded">
@@ -89,199 +180,74 @@
             <input type="text" class="form-control" id="symptomsInput" name="symptomsInput" placeholder="Enter symptoms or click buttons below">
         </div>
         <br>
-        
+
         <!-- Symptom Buttons -->
         <div id="symptom-buttons">
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Continuous Sneezing">Continuous Sneezing</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Shivering">Shivering</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Cough">Cough</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Fatigue">Fatigue</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Acidity">Acidity</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Nodal Skin Eruptions">Nodal Skin Eruptions</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Stomach Pain">Stomach Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Chills">Chills</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Skin Rash">Skin Rash</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Joint Pain">Joint Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Muscle Wasting">Muscle Wasting</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Ulcers On Tongue">Ulcers On Tongue</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Vomiting">Vomiting</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Burning Micturition">Burning Micturition</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Spotting Urination">Spotting Urination</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Anxiety">Anxiety</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Cold Hands And Feets">Cold Hands and Feets</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Mood SwingS">Mood Swings</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Restlessness">Restlessness</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="High Fever">High Fever</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Breathlessness">Breathlessness</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Indigestion">Indigestion</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="DehyDration">Dehydration</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Headache">Headache</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Yellowish Skin">Yellowish Skin</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Dark Urine">Dark Urine</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Back Pain">Back Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Constipation">Constipation</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Abdominal Pain">Abdominal Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Diarrhoea">Diarrhoea</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Mild Fever">Mild Fever</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Yellow Urine">Yellow Urine</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Acute Liver FaiLure">Acute Liver Failure</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Yellowing Of Eyes">Yellowing Of Eyes</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Swelling Of StOmach">Swelling of Stomach</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Chest Pain">Chest Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Weakness In Limbs">Weakness In Limbs</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Fast Heart Rate">Fast Heart Rate</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Neck Pain">Neck Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Cramps">Cramps</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Puffy Face And Eyes">Puffy Face And Eyes</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Hip Joint Pain">Hip Joint Pain</button>
-            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Small Dents In Nails">Small Dents In Nails</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="continuous_sneezing">continuous_sneezing</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="shivering">shivering</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="cough">cough</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="fatigue">fatigue</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="acidity">acidity</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="nodal_skin_eruptions">nodal_skin_eruptions</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="stomach_pain">stomach_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="chills">chills</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="skin_rash">skin_rash</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="joint_pain">joint_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="muscle_wasting">muscle_wasting</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="ulcers_on_tongue">ulcers_on_tongue</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="vomiting">vomiting</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="burning_micturition">burning_micturition</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="spotting_urination">spotting_urination</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="anxiety">anxiety</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="cold_hands_and_feets">cold_hands_and_feets</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="mood_swings">mood_swings</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="restlessness">restlessness</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="high_fever">high_fever</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="breathlessness">breathlessness</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="indigestion">indigestion</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="dehydration">dehydration</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="headache">headache</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="yellowish_skin">yellowish_skin</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="dark_urine">dark_urine</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="back_pain">back_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="constipation">constipation</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="abdominal_pain">abdominal_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="diarrhoea">diarrhoea</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="mild_fever">mild_fever</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="yellow_urine">yellow_urine</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="acute_liver_failure">acute_liver_failure</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="yellowing_of_eyes">yellowing_of_eyes</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="swelling_of_stomach">swelling_of_stomach</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="chest_pain">chest_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="weakness_in_limbs">weakness_in_limbs</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="fast_heart_rate">fast_heart_rate</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="neck_pain">neck_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="cramps">cramps</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="puffy_face_and_eyes">puffy_face_and_eyes</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="hip_joint_pain">hip_joint_pain</button>
+            <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="small_dents_in_nails">small_dents_in_nails</button>
+            <!-- Add more buttons here -->
         </div>
         <br>
-        {% if message %}
-        <p class="message-text">{{ message }}</p>
-        {% endif %}
-        <br>
-        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:3px;border:1px solid rgb(83, 47, 47); border-radius:20px;">
-            Start Speech Recognition 
+        <button type="button" id="startSpeechRecognition" class="btn btn-primary speechbutton" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+            Start Speech Recognition
         </button>
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-            <style>
-                button {
-                    border: none;
-                    background: none;
-                    cursor: pointer;
-                }
-            </style>
-        </head>
-        <body>
-            <button onclick="toggleMicrophone()">
-                <i class="fa-solid fa-microphone-slash fa-2xl"></i>
-            </button>
-        
-            <script>
-                function toggleMicrophone() {
-                    alert('Microphone toggled!');
-                    // Add your logic here, e.g., enabling or disabling microphone input
-                }
-            </script>
-        </body>        
-        <br>
 
-        <!-- <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        </head>
-        <body>
-            <i class="fa-solid fa-microphone-slash"></i>
-        </body> -->
-
-        <!-- Display the transcribed text here -->
-        <div name="mysysms" id="transcription"></div>
-
-        {% if message %}
-        <p>{{ message }}</p>
-        {% endif %}
-        <br>
-
-        <button type="submit" class="btn btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
+        <i id="microphoneIcon" class="fa-solid fa-microphone fa-2xl" style="color:rgb(43, 192, 200); cursor: pointer;"></i>
+        <br><br>
+        <button type="submit" class="btn predict-button btn-lg">Predict</button>
     </form>
 </div>
 
-{% if predicted_disease %}
-<!-- Results -->
-<h4 class="text-center my-4 mt-4">Predicted Results:</h4>
-<div class="container my-4 mt-4">
-    <table class="table">
-        <thead>
-            <tr>
-                <h2>Showing predictions for {{symptoms}}</h2>
-            </tr>
-        </thead>
-        <thead>
-            <tr>
-                <th scope="col">Disease</th>
-                <th scope="col">{{predicted_disease}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Description</th>
-                <td>{{ dis_des }}</td>
-            </tr>
-            <tr>
-                <th>Precautions</th>
-                <td>
-                    <ul>
-                        {% for i in my_precautions %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>Medications</th>
-                <td>
-                    <ul>
-                        {% for i in medications %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <!-- <th>Workout</th> -->
-                <!-- <td>
-                    <ul>
-                        {% for i in workout %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </td> -->
-            </tr>
-            <tr>
-                <th>Diet</th>
-                <td>
-                    <ul>
-                        {% for i in my_diet %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-{% endif %}
-
-<script>
-    // Add event listener for reset button
-    document.getElementById('resetButton').addEventListener('click', function(event) {
-        event.preventDefault();  // Prevent default action for the anchor link
-
-        // Example action: Reset a form
-        const form = document.querySelector('form');  // Adjust the form selector if necessary
-        if (form) {
-            form.reset();  // Reset the form
-        }
-
-        // Alternatively, reset specific elements or settings
-        console.log('Reset button clicked!');
-    });
-</script>
 
 <script>
 
-  // Handle symptom button clicks
+
   document.querySelectorAll('.symptom-btn').forEach(button => {
     button.addEventListener('click', () => {
       const inputField = document.getElementById('symptomsInput');
       let currentValue = inputField.value;
 
-      // Add symptom only if it's not already in the input
       if (!currentValue.includes(button.dataset.symptom)) {
         inputField.value = currentValue 
                           ? currentValue + ', ' + button.dataset.symptom 
@@ -292,36 +258,91 @@
 </script>
 
 <script>
-    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
-    const transcriptionDiv = document.getElementById('transcription');
-    const symptomsInput = document.getElementById('symptoms');
 
-    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+const symptomsInput = document.getElementById('symptomsInput'); 
 
-    function startSpeechRecognition() {
-        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
-        recognition.lang = 'en-US'; // Set the language for recognition
+startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
 
-        recognition.onresult = function (event) {
-            const result = event.results[0][0].transcript;
+function startSpeechRecognition() {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US'; 
 
-            // Display the transcribed text
-            transcriptionDiv.textContent = `You said: ${result}`;
+    recognition.onresult = function (event) {
+        const result = event.results[0][0].transcript;
 
-            // Add the transcribed text to the symptoms input field
-            if (symptomsInput.value.trim()) {
-                symptomsInput.value += `, ${result}`; // Append new symptoms
-            } else {
-                symptomsInput.value = result; // Add as the first symptom
-            }
-        };
+        if (symptomsInput.value.trim()) {
+            symptomsInput.value += `, ${result}`;
+        } else {
+            symptomsInput.value = result; 
+        }
+    };
 
-        recognition.onend = function () {
-            console.log('Speech recognition ended.');
-        };
+    recognition.onerror = function (event) {
+        console.errorerror('Speech recognition error:', event.error);
+    };
 
-        recognition.start();
+    recognition.onend = function () {
+        console.log('Speech recognition ended.');
+    };
+
+    recognition.start();
 }
+
+
+document.querySelectorAll('.symptom-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        let currentValue = symptomsInput.value;
+
+        if (!currentValue.includes(button.dataset.symptom)) {
+            symptomsInput.value = currentValue 
+                ? currentValue + ', ' + button.dataset.symptom 
+                : button.dataset.symptom;
+        }
+
+        button.style.backgroundColor = 'blue';
+        button.style.color = 'white';
+
+        button.classList.add('selected');
+    });
+});
+
+
+
 </script>
+<script>
+const microphoneIcon = document.getElementById('microphoneIcon');
+
+microphoneIcon.addEventListener('click', startSpeechRecognition);
+
+function startSpeechRecognition() {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+
+    recognition.onresult = function (event) {
+        const result = event.results[0][0].transcript;
+
+        
+        if (symptomsInput.value.trim()) {
+            symptomsInput.value += `, ${result}`;
+        } else {
+            symptomsInput.value = result; 
+        }
+    };
+
+    recognition.onerror = function (event) {
+        console.error('Speech recognition error:', event.error);
+    };
+
+    recognition.onend = function () {
+        console.log('Speech recognition ended.');
+    };
+
+    recognition.start();
+}
+
+</script>
+<!-- -------------------------------------------------------------------------------------- -->
+ <!-- ----------------------------------------------------------------------------------------------------- -->
 </body>
 </html>
