@@ -100,9 +100,54 @@
         .predict-button:hover {
             background-color: #0056B3;
         }
+        .speech-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing between button and icon */
+    margin-top: 10px;
+}
+
+.speechbutton {
+    background-color: #20C997;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    height: 50px; /* Consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.speechbutton:hover {
+    background-color: #17A589;
+}
+
+#microphoneIcon {
+    background-color: #20C997;
+    color: white;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 50px; /* Consistent height */
+    width: 50px; /* Perfect circle */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#microphoneIcon:hover {
+    background-color: #17A589;
+    transform: scale(1.1);
+}
+
 
         /* Speech Button */
-        .speechbutton {
+        /* .speechbutton {
             background-color: #20C997;
             color: white;
             border: none;
@@ -113,10 +158,10 @@
 
         .speechbutton:hover {
             background-color: #17A589;
-        }
+        } */
 
         /* Microphone Icon */
-        #microphoneIcon {
+        /* #microphoneIcon {
             color: #20C997;
             font-size: 36px;
             transition: transform 0.3s ease;
@@ -125,7 +170,7 @@
 
         #microphoneIcon:hover {
             transform: rotate(15deg) scale(1.2);
-        }
+        } */
 
         /* Text Input Field */
         .form-control {
@@ -226,15 +271,14 @@
             <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Puffy Face And Eyes">Puffy Face And Eyes</button>
             <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Hip Joint Pain">Hip Joint Pain</button>
             <button type="button" class="btn btn-outline-primary symptom-btn" data-symptom="Small Dents In Nails">Small Dents In Nails</button>
-            <!-- Add more buttons here -->
         </div>
         <br>
-        <button type="button" id="startSpeechRecognition" class="btn btn-primary speechbutton" style="margin-left:3px;border:1px solid white; border-radius:20px;">
-            Start Speech Recognition
-        </button>
-
-        <i id="microphoneIcon" class="fa-solid fa-microphone fa-2xl" style="color:rgb(43, 192, 200); cursor: pointer;"></i>
-        <br><br>
+        <div class="speech-container">
+            <button type="button" id="startSpeechRecognition" class="speechbutton">
+                Start Speech Recognition
+            </button>
+            <div id="microphoneIcon" class="fa-solid fa-microphone"></div>
+        </div><br>
         <button type="submit" class="btn predict-button btn-lg">Predict</button>
     </form>
 </div>
