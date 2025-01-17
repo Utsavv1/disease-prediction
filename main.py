@@ -9,15 +9,15 @@ app = Flask(__name__)
 
 
 
-sym_des = pd.read_csv("D:/new project/disease_prediction/symtoms_df.csv")
-precautions = pd.read_csv("D:/new project/disease_prediction/precautions_df.csv")
-workout = pd.read_csv("D:/new project/disease_prediction/workout_df.csv")
-description = pd.read_csv("D:/new project/disease_prediction/description.csv")
-medications = pd.read_csv('D:/new project/disease_prediction/medications.csv')
-diets = pd.read_csv("D:/new project/disease_prediction/diets.csv")
+sym_des = pd.read_csv("D:/new project/python project/disease-prediction/symtoms_df.csv")
+precautions = pd.read_csv("D:/new project/python project/disease-prediction/precautions_df.csv")
+workout = pd.read_csv("D:/new project/python project/disease-prediction/workout_df.csv")
+description = pd.read_csv("D:/new project/python project/disease-prediction/description.csv")
+medications = pd.read_csv('D:/new project/python project/disease-prediction/medications.csv')
+diets = pd.read_csv("D:/new project/python project/disease-prediction/diets.csv")
 
 # load model===========================================
-svc = pickle.load(open('D:/new project/disease_prediction/svc.pkl','rb'))
+svc = pickle.load(open('D:/new project/python project/disease-prediction/svc.pkl','rb'))
 
 
 #============================================================
