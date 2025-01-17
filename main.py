@@ -115,7 +115,11 @@ def predict():
             my_diets=my_diets,
             workout = workout
         )
-
+@app.route('/result', methods=['POST'])
+def result():
+    # Process form data here and return result.html
+    user_input = request.form.get('input_field', '')
+    return render_template('result.html', result=user_input)
 
 # about view funtion and path
 @app.route('/about')
