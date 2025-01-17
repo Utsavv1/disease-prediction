@@ -9,16 +9,15 @@ app = Flask(__name__)
 
 
 
-sym_des = pd.read_csv("D:/utsav1/prediction/disease_prediction/disease-prediction/data/symtoms_df.csv")
-precautions = pd.read_csv("D:/utsav1/prediction/disease_prediction/disease-prediction/data/precautions_df.csv")
-workout = pd.read_csv("D:/utsav1/prediction/disease_prediction/disease-prediction/data/workout_df.csv")
-description = pd.read_csv("D:/utsav1/prediction/disease_prediction/disease-prediction/data/description.csv")
-medications = pd.read_csv('D:/utsav1/prediction/disease_prediction/disease-prediction/data/medications.csv')
-diets = pd.read_csv("D:/utsav1/prediction/disease_prediction/disease-prediction/data/diets.csv")
+sym_des = pd.read_csv("D:/utsav1/prediction/disease-prediction/data/symtoms_df.csv")
+precautions = pd.read_csv("D:/utsav1/prediction/disease-prediction/data/precautions_df.csv")
+workout = pd.read_csv("D:/utsav1/prediction/disease-prediction/data/workout_df.csv")
+description = pd.read_csv("D:/utsav1/prediction/disease-prediction/data/description.csv")
+medications = pd.read_csv('D:/utsav1/prediction/disease-prediction/data/medications.csv')
+diets = pd.read_csv("D:/utsav1/prediction/disease-prediction/data/diets.csv")
 
 # load model===========================================
-svc = pickle.load(open('D:/utsav1/prediction/disease_prediction/disease-prediction/model/svc.pkl','rb'))
-
+svc = pickle.load(open('D:/utsav1/prediction/disease-prediction/model/svc.pkl','rb'))
 
 def extract_symptoms(sentence):
     """
@@ -39,11 +38,11 @@ def helper(dis):
     pre = precautions[precautions['Disease'] == dis][['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']]
     pre = [col for col in pre.values] if not pre.empty else [["No precautions available."]]
 
-    med = medications[medications['Disease'] == dis]['Medication']
-    med = [med for med in med.values] if not med.empty else ["No medications available."]
+    med = medications[medications['Disease'] == dis][['Medication_1', 'Medication_2', 'Medication_3', 'Medication_4', 'Medication_5']]
+    med = [col for col in med.values] if not med.empty else ["No medications available."]
 
-    die = diets[diets['Disease'] == dis]['Diet']
-    die = [die for die in die.values] if not die.empty else ["No diet recommendations available."]
+    die = diets[diets['Disease'] == dis][['Diet_1','Diet_2','Diet_3','Diet_4','Diet_5']]
+    die = [col for col in die.values] if not die.empty else ["No diet recommendations available."]
 
     wrkout = workout[workout['disease'] == dis]['workout']
     wrkout = wrkout.values[0] if not wrkout.empty else "No workout recommendations available."
@@ -98,9 +97,11 @@ def predict():
         # Predict disease
         predicted_disease = get_predicted_value(extracted_symptoms)
 
-        dis_des, precautions, medications, rec_diet , wrkout= helper(predicted_disease)
+        dis_des, precautions, medications, diets , workout= helper(predicted_disease)
 
         my_precautions = [precaution for precaution in precautions[0]]
+        my_medications = [medications for medications in medications[0]]
+        my_diets = [diets for diets in diets[0]]
 
         return render_template(
              "results.html",
@@ -110,9 +111,9 @@ def predict():
             predicted_disease=predicted_disease, 
             dis_des=dis_des, 
             my_precautions=my_precautions,
-            medications=medications, 
-            my_diet=rec_diet,
-            wrkout = workout
+            my_medications=my_medications, 
+            my_diets=my_diets,
+            workout = workout
         )
 
 
